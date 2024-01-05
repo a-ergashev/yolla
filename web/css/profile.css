@@ -1,0 +1,22 @@
+.skills {
+	width: 300px;
+    margin-bottom: 3px;
+}
+
+.skills > span {
+	background-color: gray;
+	color: white;
+	padding: 5px;
+	margin: 2px;
+	border-radius: 3px;
+	display: inline-flex;
+}
+
+.logout {
+	border: none;
+	padding: 0;
+	margin: 5px 0 0 0;
+	background: none;
+	color: blue;
+	text-decoration: underline;
+}

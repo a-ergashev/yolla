@@ -1,0 +1,48 @@
++ user org skill vacancy tables created at 'yii2basic'
++ db connection ready at 'config/db.php'
++ users, vacancy, organization models added to models folder
++ all relations defined in classes
++ actionIndex created at VacancyController.php
+    + view named index.php added to vacancy subdir of views
+
++ values added to organization and vacancies tables
++ views\vacancy\index.php now displays vacancy title and organization name (relational)
++ site\index moved to indexold.text; views\site\vacancy\index to site\index
++ index of VacancyController to index of SiteController
++ login view to signup view
++ User renamed to Users. It now extends yii\db\ActiveRecord
++ findByEmail method added to users
++ password column added to users table at database
++ signup action implemented at SiteController
++ identity class set to 'app\models\Users' at web config
++ users/id column modified to be incremented automatically
++ rules added to signup action. it's up and running
++ login at site\index
+
++ profile page.
+    + adding skills
+    + displaying skills
+    + logout
+    + send skill table data to profile view
+
+    urgent
++ resolve login error
++ job snippet
+
++ jobs list based on the skill match (took a week)
+- get apply button to work
+    (progress: working on apply controller method)
+    + when clicked, add record to user_vacancy
+    - once applied, button can't be pressed again (half-done)
+
+- on the dropbox, show skills that are not already added
+- organization
+    - registration
+    - login
+    - ability to add vacancy
+
+
+    tweaks
+- no skill pane when none skill
+- add button right after the dropdown
+- email and password fields for the registration form
