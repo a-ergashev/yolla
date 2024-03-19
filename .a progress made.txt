@@ -30,12 +30,13 @@
 + job snippet
 
 + jobs list based on the skill match (took a week)
-- get apply button to work
++ get apply button to work
     (progress: working on apply controller method)
     + when clicked, add record to user_vacancy
     - once applied, button can't be pressed again (half-done)
 
-- on the dropbox, show skills that are not already added
++ on the dropbox, show skills that are not already added
+
 - organization
     - registration
     - login

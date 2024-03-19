@@ -28,13 +28,12 @@ $form = ActiveForm::begin([
     <div class="row">
         <div class="col-lg-5">
             <?php echo $form->field($model, 'name')->dropDownList(array_combine($skills, $skills), ['prompt' => 'Select...']) ?>
-        
             <?= Html::submitButton('ADD', ['class' => 'btn btn-primary']); ?>
-            <?php ActiveForm::end(); ?>
-            
-            <?php $form = ActiveForm::begin(['action' => ['site/logout']]); ?>
-            <?= Html::submitButton('LOGOUT', ['class'=> 'logout']); ?>
             <?php ActiveForm::end(); ?>
         </div>
     </div>
+
+    <form action="http://localhost:8080/index.php?r=site%2Flogout" method="post">
+            <button class="logout">LOGOUT</button>
+    </form>
 </div>

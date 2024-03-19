@@ -1,6 +1,6 @@
 <?php
-use yii\helpers\Html;
-use yii\widgets\ActiveForm;
+use yii\bootstrap5\ActiveForm;
+use yii\bootstrap5\Html;
 ?>
     <div class="row">
         <div class="col-lg-5">
@@ -15,8 +15,8 @@ use yii\widgets\ActiveForm;
             ]) ?>
             <?= $form->field($model, 'email') ?>
             <?= $form->field($model, 'fullname') ?>
-            <?= $form->field($model, 'password') ?>
-            
+            <?= $form->field($model, 'password')->passwordInput() ?>
+            <?= $form->field($model, 'password2')->passwordInput()->label('Confirm') ?>
 
             <div class="form-group">
                 <div class="col-lg-offset-1 col-lg-1">

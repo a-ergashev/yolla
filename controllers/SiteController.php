@@ -3,6 +3,7 @@
 namespace app\controllers;
 
 use Yii;
+use yii\db\Exception;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
@@ -62,7 +63,8 @@ class SiteController extends Controller
     /**
      * Displays homepage.
      *
-     * @return string
+     * @return string | Response
+     * @throws Exception
      */
     public function actionIndex()
     {
@@ -83,7 +85,7 @@ class SiteController extends Controller
             ->select('vacancy_id')
             ->from('user_vacancy')
             ->where(['vacancy_id' => $arr, 'user_id' => Yii::$app->user->id])
-            ->column();      
+            ->column();
 
         return $this->render('index', [
             'vacancies' => $vacancies,
@@ -100,7 +102,7 @@ class SiteController extends Controller
         
         $model = new Users();
 
-        if ($model->load(Yii::$app->request->post())&&$model->validate()) {
+        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
             $existingUser = Users::find()->where(['email' => $model->email])->exists();
             if (!$existingUser) {
                 $model->password = Yii::$app->getSecurity()->generatePasswordHash($model->password);
@@ -108,11 +110,9 @@ class SiteController extends Controller
                     // User successfully saved
                     return $this->goBack();
                 } else {
-                    // Error saving user
                     Yii::error('Error saving user: ' . print_r($model->errors, true));
                 }
             } else {
-                // User with this email already exists
                 Yii::$app->session->setFlash('error', 'User with this email already exists.');
             }
         }
@@ -173,14 +173,6 @@ class SiteController extends Controller
     }
 
     public function actionApply(){
-        // adds record to user_vacancy table:
-        // two ways
-        // 1. writing raw sql
-        // 2. using activerecord
-        // TODO: implement both!
-        // learn:
-        // - getting specific data point from request
-        // - adding records to junction table using active record
         $vacId = Yii::$app->request->post('id');
         $userId = Yii::$app->user->id;
 

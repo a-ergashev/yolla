@@ -7,6 +7,7 @@ use yii\db\ActiveRecord;
 
 class Users extends ActiveRecord implements \yii\web\IdentityInterface
 {
+    public $password2;
     /**
      * @param string|int $id the ID to be looked for
      * @return IdentityInterface|null the identity object that matches the given ID
@@ -48,10 +49,12 @@ class Users extends ActiveRecord implements \yii\web\IdentityInterface
         }
         return false;
     }
+
     public function rules(){
         return [
             [['email', 'fullname', 'password'], 'required'],
-            ['email', 'email']
+            ['email', 'email'],
+            ['password', 'compare', 'compareAttribute' => 'password2', 'message' => 'Passwords should match']
         ];
     }
     
@@ -88,6 +91,6 @@ class Users extends ActiveRecord implements \yii\web\IdentityInterface
     }
     public function getVacancies(){
         $this->hasMany(Vacancy::class, ['id' => 'vacancy_id'])
-        ->viaTable('user_vacancy', ['user_id' => 'id']);
+            ->viaTable('user_vacancy', ['user_id' => 'id']);
     }
 }
